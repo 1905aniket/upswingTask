@@ -1,0 +1,37 @@
+<div class="container my-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              id="title"
+              type="text"
+              class="form-control"
+              formControlName="title"
+              placeholder="Enter task title"
+            />
+            <div
+              class="text-danger mt-1"
+              *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+              Title is required.
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select id="status" class="form-select" formControlName="status">
+              <option>Pending</option>
+              <option>In Progress</option>
+              <option>Completed</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+            <i class="bi bi-plus-circle me-1"></i> Add Task
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
